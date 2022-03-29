@@ -7,7 +7,6 @@ variables:
 
 trigger:
   - main
-  - add-library-variables
   
 pool:
     vmImage: ubuntu-latest
