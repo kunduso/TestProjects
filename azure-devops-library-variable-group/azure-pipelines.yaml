@@ -18,11 +18,12 @@ steps:
     inputs:
       targetType: 'inline'
       script: 'Write-Host "Value of secure variable: `
-      $(SecureVariable)"'
-
-  - task: PowerShell@2
-    displayName: 'Display unsecure variable'
-    inputs:
-      targetType: 'inline'
-      script: 'Write-Host "Value of unsecure variable: `
+      $(SecureVariable)" `n"Value of unsecure variable: `
       $(UnsecureVariable)"'
+
+  # - task: PowerShell@2
+  #   displayName: 'Display unsecure variable'
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: 'Write-Host "Value of unsecure variable: `
+  #     $(UnsecureVariable)"'
