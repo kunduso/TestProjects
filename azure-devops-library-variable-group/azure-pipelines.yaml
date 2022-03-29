@@ -1,0 +1,28 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+variables:
+  - group: demo-one
+
+trigger:
+  - main
+  - add-library-variables
+  
+pool:
+    vmImage: ubuntu-latest
+  
+steps:
+  - task: PowerShell@2
+    displayName: 'Display secure variable'
+    inputs:
+      targetType: 'inline'
+      script: 'Write-Host "Value of secure variable: `
+      $(SecureVariable)"'
+
+  - task: PowerShell@2
+    displayName: 'Display unsecure variable'
+    inputs:
+      targetType: 'inline'
+      script: 'Write-Host "Value of unsecure variable: `
+      $(UnsecureVariable)"'
