@@ -41,5 +41,6 @@ steps:
     displayName: 'Get AWS DefaultRegion'
     inputs:
       targetType: 'inline'
-      script: 'Get-Default-AWSRegion'
+      script: 'Set-DefaultAWSRegion -Region us-east-2 `
+        Get-DefaultAWSRegion'
     continueOnError: true
