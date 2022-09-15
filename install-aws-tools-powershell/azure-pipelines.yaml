@@ -41,6 +41,6 @@ steps:
   #           Write-Host "Value of region:  $RegionValue"
   #   continueOnError: true
   - task: PowerShell@2
-    displayName: 'Check and install AWS.Tools.Installer and AWS.Tools.Common modules'
+    displayName: 'Run region test'
     inputs:
       filePath: '$(build.sourcesdirectory)/install-aws-tools-powershell/regiontest.ps1'
