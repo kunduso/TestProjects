@@ -26,17 +26,21 @@ steps:
       script: 'Set-AWSCredential -AccessKey $(access_key) `
                 -SecretKey $(secret_key) `
                 -StoreAs $(profile)'
+  # - task: PowerShell@2
+  #   displayName: 'Set AWS Region'
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: 'Set-DefaultAWSRegion -Region us-east-2'
+  #   continueOnError: true
+  # - task: PowerShell@2
+  #   displayName: 'Get AWS DefaultRegion'
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: |
+  #           $RegionValue = (Get-DefaultAWSRegion) | Out-String
+  #           Write-Host "Value of region:  $RegionValue"
+  #   continueOnError: true
   - task: PowerShell@2
-    displayName: 'Set AWS Region'
+    displayName: 'Check and install AWS.Tools.Installer and AWS.Tools.Common modules'
     inputs:
-      targetType: 'inline'
-      script: 'Set-DefaultAWSRegion -Region us-east-2'
-    continueOnError: true
-  - task: PowerShell@2
-    displayName: 'Get AWS DefaultRegion'
-    inputs:
-      targetType: 'inline'
-      script: |
-            $RegionValue = (Get-DefaultAWSRegion) | Out-String
-            Write-Host "Value of region:  $RegionValue"
-    continueOnError: true
+      filePath: '$(build.sourcesdirectory)/install-aws-tools-powershell/regiontest.ps1'
