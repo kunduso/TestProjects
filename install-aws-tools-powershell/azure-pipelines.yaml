@@ -32,15 +32,14 @@ steps:
   #     targetType: 'inline'
   #     script: 'Set-DefaultAWSRegion -Region us-east-2'
   #   continueOnError: true
-  # - task: PowerShell@2
-  #   displayName: 'Get AWS DefaultRegion'
-  #   inputs:
-  #     targetType: 'inline'
-  #     script: |
-  #           $RegionValue = (Get-DefaultAWSRegion) | Out-String
-  #           Write-Host "Value of region:  $RegionValue"
-  #   continueOnError: true
+
   - task: PowerShell@2
     displayName: 'Run region test'
     inputs:
       filePath: '$(build.sourcesdirectory)/install-aws-tools-powershell/regiontest.ps1'
+  - task: PowerShell@2
+    displayName: 'Get AWS DefaultRegion'
+    inputs:
+      targetType: 'inline'
+      script: 'Get-DefaultAWSRegion'
+    continueOnError: true
