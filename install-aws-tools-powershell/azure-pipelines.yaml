@@ -26,13 +26,6 @@ steps:
       script: 'Set-AWSCredential -AccessKey $(access_key) `
                 -SecretKey $(secret_key) `
                 -StoreAs $(profile)'
-  # - task: PowerShell@2
-  #   displayName: 'Set AWS Region'
-  #   inputs:
-  #     targetType: 'inline'
-  #     script: 'Set-DefaultAWSRegion -Region us-east-2'
-  #   continueOnError: true
-
   - task: PowerShell@2
     displayName: 'Run region test'
     inputs:
