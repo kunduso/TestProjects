@@ -34,8 +34,9 @@ steps:
     displayName: 'Set AWS DefaultRegion'
     inputs:
       targetType: 'inline'
-      script: 'Set-DefaultAWSRegion -Region $(region) `
-      Write-Host "Value of AWS DefaultRegion: $StoredAWSRegion"'
+      script: |
+        Set-DefaultAWSRegion -Region $(region) `
+        Write-Host "Value of AWS DefaultRegion: $StoredAWSRegion"
   # - task: PowerShell@2
   #   displayName: 'Get AWS DefaultRegion'
   #   inputs:
