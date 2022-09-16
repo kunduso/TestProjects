@@ -39,5 +39,5 @@ steps:
     displayName: 'Get AWS DefaultRegion'
     inputs:
       targetType: 'inline'
-      script: 'Get-DefaultAWSRegion'
+      script: 'Write-Host "Value of AWS DefaultRegion: $StoredAWSRegion"'
     continueOnError: true
