@@ -23,7 +23,7 @@ steps:
     displayName: 'Set AWS Credentail'
     inputs:
       targetType: 'inline'
-      script: '  -AccessKey $(access_key) `
+      script: 'Set-AWSCredential -AccessKey $(access_key) `
                 -SecretKey $(secret_key) `
                 -Region $(region) `
                 -StoreAs $(profile)'
