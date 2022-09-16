@@ -1,2 +1,2 @@
-Set-DefaultAWSRegion -Region us-east-2
+Set-DefaultAWSRegion -Region us-east-1
 Get-DefaultAWSRegion
