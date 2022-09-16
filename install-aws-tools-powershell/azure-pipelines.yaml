@@ -23,8 +23,9 @@ steps:
     displayName: 'Set AWS Credentail'
     inputs:
       targetType: 'inline'
-      script: 'Set-AWSCredential -AccessKey $(access_key) `
+      script: '  -AccessKey $(access_key) `
                 -SecretKey $(secret_key) `
+                -Region $(region) `
                 -StoreAs $(profile)'
   - task: PowerShell@2
     displayName: 'Run region test'
@@ -42,12 +43,12 @@ steps:
   #       Write-Host "Value of AWS DefaultRegion: $RegionValue"
 
   # Breaking the set-defaultregion and get-defaultregion into separate tasks
-  - task: PowerShell@2
-    displayName: 'Set AWS DefaultRegion'
-    inputs:
-      targetType: 'inline'
-      script: |
-        Set-DefaultAWSRegion -ProfileLocation Pipeline -Region us-east-2
+  # - task: PowerShell@2
+  #   displayName: 'Set AWS DefaultRegion'
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: |
+  #       Set-DefaultAWSRegion -Region us-east-2
 
   - task: PowerShell@2
     displayName: 'Get AWS DefaultRegion'
