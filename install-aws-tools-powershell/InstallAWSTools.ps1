@@ -6,8 +6,7 @@ $RequiredModules = @(
                         "AWS.Tools.Installer",
                         "AWS.Tools.Common"
                     )
-
-foreach ($module in $RequiredModule)
+foreach ($module in $RequiredModules)
 {
     Write-Host "Checking if $module is installed on this instance."
     if ($ListofModulesInstalled -contains "$module")
