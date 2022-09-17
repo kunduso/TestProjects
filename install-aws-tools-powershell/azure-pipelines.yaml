@@ -13,11 +13,11 @@ trigger:
   branches:
     include:
       - main
-      - install-awstools
   paths:
     include:
       - install-aws-tools-powershell
-
+pr:
+  - main
 pool:
     vmImage: ubuntu-latest
   

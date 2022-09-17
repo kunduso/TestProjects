@@ -6,8 +6,14 @@ variables:
   - group: demo-one
 
 trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - azure-devops-library-variable-group
+pr:
   - main
-  
 pool:
     vmImage: ubuntu-latest
   
