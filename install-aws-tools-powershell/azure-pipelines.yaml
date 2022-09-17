@@ -16,7 +16,8 @@ trigger:
   paths:
     include:
       - install-aws-tools-powershell
-
+pr:
+  - main
 pool:
     vmImage: ubuntu-latest
   
