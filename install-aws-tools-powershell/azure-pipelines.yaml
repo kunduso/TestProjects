@@ -2,6 +2,7 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+name: install_aws_tools_ps_$(Date:yyyyMMdd)$(Rev:.r)
 variables:
   - group: app-one
   - name: region
@@ -9,8 +10,14 @@ variables:
   - name: profile
     value: 'PSProfile'
 trigger:
-  - install-awstools
-  
+  branches:
+    include:
+      - main
+      - install-awstools
+  paths:
+    include:
+      - install-aws-tools-powershell
+
 pool:
     vmImage: ubuntu-latest
   
