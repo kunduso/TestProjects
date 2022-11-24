@@ -9,12 +9,8 @@ $ListofModulesInstalled = (Get-InstalledModule).Name
 # https://www.powershellgallery.com/packages/AWS.Tools.Common
 # Populate below list with modules based on your requirement
 # More modules could be found at: https://www.powershellgallery.com/packages?q=AWS.Tools
-$RequiredModules = @(
-                        "AWS.Tools.Installer",
-                        "AWS.Tools.Common"
-                    )
-
-foreach ($module in $RequiredModules)
+$RequiredAWSModules = Get-Content -Path .\aws-ps-modules.json -Raw | ConvertFrom-Json
+foreach ($module in $RequiredAWSModules.InstallAWSModules)
 {
     Write-Host "Checking if $module is installed on this instance."
     if ($ListofModulesInstalled -contains "$module")

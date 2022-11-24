@@ -13,6 +13,7 @@ trigger:
   branches:
     include:
       - main
+      - dev/add-config
   paths:
     include:
       - install-aws-tools-powershell
@@ -26,6 +27,7 @@ steps:
     displayName: 'Check and install AWS.Tools.Installer and AWS.Tools.Common modules'
     inputs:
       filePath: '$(build.sourcesdirectory)/install-aws-tools-powershell/InstallAWSTools.ps1'
+      workingDirectory: $(System.DefaultWorkingDirectory)/install-aws-tools-powershell
   - task: PowerShell@2
     displayName: 'Set AWS Credential'
     inputs:
