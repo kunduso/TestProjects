@@ -28,17 +28,17 @@ steps:
     inputs:
       filePath: '$(build.sourcesdirectory)/install-aws-tools-powershell/InstallAWSTools.ps1'
       workingDirectory: $(System.DefaultWorkingDirectory)/install-aws-tools-powershell
-  # - task: PowerShell@2
-  #   displayName: 'Set AWS Credential'
-  #   inputs:
-  #     targetType: 'inline'
-  #     script: 'Set-AWSCredential -AccessKey $(access_key) `
-  #               -SecretKey $(secret_key) `
-  #               -StoreAs $(profile)'
+  - task: PowerShell@2
+    displayName: 'Set AWS Credential'
+    inputs:
+      targetType: 'inline'
+      script: 'Set-AWSCredential -AccessKey $(access_key) `
+                -SecretKey $(secret_key) `
+                -StoreAs $(profile)'
 
-  # - task: PowerShell@2
-  #   displayName: 'Remove AWS Credential'
-  #   inputs:
-  #     targetType: 'inline'
-  #     script: 'Remove-AWSCredentialProfile -ProfileName $(profile) -Force'
-  #   condition: always()
+  - task: PowerShell@2
+    displayName: 'Remove AWS Credential'
+    inputs:
+      targetType: 'inline'
+      script: 'Remove-AWSCredentialProfile -ProfileName $(profile) -Force'
+    condition: always()
