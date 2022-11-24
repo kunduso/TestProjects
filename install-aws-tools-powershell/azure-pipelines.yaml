@@ -13,6 +13,7 @@ trigger:
   branches:
     include:
       - main
+      - dev/add-config
   paths:
     include:
       - install-aws-tools-powershell
@@ -26,17 +27,17 @@ steps:
     displayName: 'Check and install AWS.Tools.Installer and AWS.Tools.Common modules'
     inputs:
       filePath: '$(build.sourcesdirectory)/install-aws-tools-powershell/InstallAWSTools.ps1'
-  - task: PowerShell@2
-    displayName: 'Set AWS Credential'
-    inputs:
-      targetType: 'inline'
-      script: 'Set-AWSCredential -AccessKey $(access_key) `
-                -SecretKey $(secret_key) `
-                -StoreAs $(profile)'
+  # - task: PowerShell@2
+  #   displayName: 'Set AWS Credential'
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: 'Set-AWSCredential -AccessKey $(access_key) `
+  #               -SecretKey $(secret_key) `
+  #               -StoreAs $(profile)'
 
-  - task: PowerShell@2
-    displayName: 'Remove AWS Credential'
-    inputs:
-      targetType: 'inline'
-      script: 'Remove-AWSCredentialProfile -ProfileName $(profile) -Force'
-    condition: always()
+  # - task: PowerShell@2
+  #   displayName: 'Remove AWS Credential'
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: 'Remove-AWSCredentialProfile -ProfileName $(profile) -Force'
+  #   condition: always()
