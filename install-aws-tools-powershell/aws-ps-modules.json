@@ -1,0 +1,6 @@
+{
+    "InstallAWSModules" : [
+        "AWS.Tools.Installer",
+        "AWS.Tools.Common"
+    ]
+}
