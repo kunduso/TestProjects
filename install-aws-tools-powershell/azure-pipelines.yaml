@@ -27,7 +27,7 @@ steps:
     inputs:
       filePath: '$(build.sourcesdirectory)/install-aws-tools-powershell/InstallAWSTools.ps1'
   - task: PowerShell@2
-    displayName: 'Set AWS Credentail'
+    displayName: 'Set AWS Credential'
     inputs:
       targetType: 'inline'
       script: 'Set-AWSCredential -AccessKey $(access_key) `
@@ -35,7 +35,7 @@ steps:
                 -StoreAs $(profile)'
 
   - task: PowerShell@2
-    displayName: 'Remove AWS Credentail'
+    displayName: 'Remove AWS Credential'
     inputs:
       targetType: 'inline'
       script: 'Remove-AWSCredentialProfile -ProfileName $(profile) -Force'
