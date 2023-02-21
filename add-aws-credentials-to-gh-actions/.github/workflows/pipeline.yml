@@ -47,7 +47,7 @@ name: 'Integrating AWS Credentials with GitHub actions'
 on:
   push:
     branches: [ "main", "add-aws-credentials-to-gh-actions" ]
-    paths: [add-aws-credentials-to-gh-actions]
+    paths: [.\add-aws-credentials-to-gh-actions]
   pull_request:
 
 jobs:
