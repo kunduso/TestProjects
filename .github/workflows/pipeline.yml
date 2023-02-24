@@ -17,6 +17,8 @@ permissions:
   id-token: write
   contents: read
 
+env:
+  bucket_name: kunduso-terraform-remote-bucket-1234567
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -43,11 +45,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Check if bucket exists
         run: |
-          getbucketstatus=$(aws s3api head-bucket --bucket "kunduso-terraform-remote" 2>/dev/null);
-          # if aws s3api head-bucket --bucket "kunduso-terraform-remote-bucket" 2>/dev/null;
-          # then
-          #   echo "bucket found"
-          # else
-          #   echo "no bucket exists"
-          # fi
-          # getbucketstatus=$(aws s3api head-bucket --bucket "kunduso-terraform-remote" 2>&1);
+          if aws s3api head-bucket --bucket "$bucket_name" 2>/dev/null;
+          then
+            echo "bucket found"
+          else
+            echo "no bucket exists"
+          fi
