@@ -47,5 +47,5 @@ jobs:
             echo "bucket found"
           else
             echo "no bucket found, hence creating..."
-            aws s3 create-bucket --bucket "$bucket_name"
+            aws s3api create-bucket --bucket "$bucket_name"
           fi
