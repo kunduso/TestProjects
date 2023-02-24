@@ -39,13 +39,18 @@ jobs:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           role-session-name: AWSSession
           aws-region: us-east-2
-      # Runs a single command using the runners shell
-      - name: Check if bucket exists
+      # Runs a command to interact with aws cloud
+      - name: Check if bucket exists and delete it
         run: |
           if aws s3api head-bucket --bucket "$bucket_name" 2>/dev/null;
           then
-            echo "bucket found"
+            echo "bucket found and deleting the bucket"
+            aws s3 rb s3://"$bucket_name" --force
           else
-            echo "no bucket found, hence creating..."
-            aws s3 mb s3://"$bucket_name"
+            echo "no bucket found"
           fi
+      - name: Create the bucket that was deleted
+        run: |
+          echo "creating bucket"
+          aws s3 mb s3://"$bucket_name"
+
