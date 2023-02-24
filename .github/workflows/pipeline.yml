@@ -43,4 +43,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Check if bucket exists
         run: |
-          getbucketstatus=$(aws s3api head-bucket --bucket "kunduso-terraform-remote" 2>&1)
+          if aws s3api head-bucket --bucket "kunduso" 2>/dev/null;
+          then
+            echo "no bucket"
+          fi
+          # getbucketstatus=$(aws s3api head-bucket --bucket "kunduso-terraform-remote" 2>&1)
