@@ -43,7 +43,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Check if bucket exists
         run: |
-          if aws s3api head-bucket --bucket "kunduso" 2>/dev/null;
+          if aws s3api head-bucket --bucket "kunduso-terraform-remote-bucket" 2>/dev/null;
           then
             echo "bucket found"
           else
