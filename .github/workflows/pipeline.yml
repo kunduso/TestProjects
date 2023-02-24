@@ -45,6 +45,8 @@ jobs:
         run: |
           if aws s3api head-bucket --bucket "kunduso" 2>/dev/null;
           then
-            echo "no bucket"
+            echo "bucket found"
+          else
+            echo "no bucket exists"
           fi
           # getbucketstatus=$(aws s3api head-bucket --bucket "kunduso-terraform-remote" 2>&1)
