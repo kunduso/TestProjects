@@ -16,7 +16,7 @@ on:
 permissions:
   id-token: write
   contents: read
-  
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -38,3 +38,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Check aws cli version
         run: aws --version
+      # Runs a single command using the runners shell
+      - name: Check if bucket exists
+        run: aws s3 head-bucket --bucket "kunduso-terraform-remote-bucket"
