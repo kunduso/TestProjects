@@ -40,14 +40,12 @@ jobs:
           role-session-name: AWSSession
           aws-region: us-east-2
       # Runs a single command using the runners shell
-      - name: Check aws cli version
-        run: aws --version
-      # Runs a single command using the runners shell
       - name: Check if bucket exists
         run: |
           if aws s3api head-bucket --bucket "$bucket_name" 2>/dev/null;
           then
             echo "bucket found"
           else
-            echo "no bucket exists"
+            echo "no bucket found, hence creating..."
+            aws s3 create-bucket --bucket "$bucket_name"
           fi
