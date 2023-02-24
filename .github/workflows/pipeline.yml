@@ -44,4 +44,3 @@ jobs:
       - name: Check if bucket exists
         run: |
           getbucketstatus=$(aws s3api head-bucket --bucket "kunduso-terraform-remote" 2>&1)
-          echo $getbucketstatus;
