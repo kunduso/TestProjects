@@ -43,7 +43,7 @@ jobs:
       - name: Check and install AWS.Tools.Installer and AWS.Tools.Common modules
         working-directory: $(System.DefaultWorkingDirectory)/install-aws-tools-powershell
         run: |
-          '$(build.sourcesdirectory)/install-aws-tools-powershell/InstallAWSTools.ps1'
+          './install-aws-tools-powershell/InstallAWSTools.ps1'
       # - name: Create the bucket that was deleted
       #   run: |
       #     echo "creating bucket"
