@@ -44,11 +44,6 @@ jobs:
         #working-directory: $(System.DefaultWorkingDirectory)/install-aws-tools-powershell
         run: |
           './install-aws-tools-powershell/InstallAWSTools.ps1'
-
-      - name: Script
-        run: ./install-aws-tools-powershell/InstallAWSTools.ps1'
-      # - name: Create the bucket that was deleted
-      #   run: |
-      #     echo "creating bucket"
-      #     aws s3 mb s3://"$bucket_name"
-
+      - name: Set AWS Credential
+        run: |
+          'Set-AWSCredential -AccessKey $(AWS_ACCESS_KEY_ID) -SecretKey $(AWS_SECRET_ACCESS_KEY) -StoreAs AWSProfile'
