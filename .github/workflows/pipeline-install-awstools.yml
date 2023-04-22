@@ -46,8 +46,8 @@ jobs:
           './install-aws-tools-powershell/InstallAWSTools.ps1'
 
       - name: Script
-          run: ./install-aws-tools-powershell/InstallAWSTools.ps1'
-          shell: powershell
+        run: ./install-aws-tools-powershell/InstallAWSTools.ps1'
+        shell: powershell
       # - name: Create the bucket that was deleted
       #   run: |
       #     echo "creating bucket"
