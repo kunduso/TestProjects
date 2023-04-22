@@ -41,9 +41,11 @@ jobs:
           aws-region: us-east-2
       # Check and install AWS.Tools.Installer and AWS.Tools.Common modules
       - name: Check and install AWS.Tools.Installer and AWS.Tools.Common modules
-        #working-directory: $(System.DefaultWorkingDirectory)/install-aws-tools-powershell
+        id: InstallAWSTools
         run: |
-          './install-aws-tools-powershell/InstallAWSTools.ps1'
+          './install-aws-tools-powershell/InstallAWSTools.ps1' >> "$GITHUB_OUTPUT"
+      - name: Read output
+        run: echo "$GITHUB_OUTPUT"
       - name: Set AWS Credential
         run: |
           'Set-AWSCredential -AccessKey $(AWS_ACCESS_KEY_ID) -SecretKey $(AWS_SECRET_ACCESS_KEY) -StoreAs AWSProfile'
