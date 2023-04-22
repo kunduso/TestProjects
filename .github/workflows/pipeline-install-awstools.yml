@@ -42,8 +42,7 @@ jobs:
       # Check and install AWS.Tools.Installer and AWS.Tools.Common modules
       - name: Check and install AWS.Tools.Installer and AWS.Tools.Common modules
         id: InstallAWSTools
-        run: |
-          '.\install-aws-tools-powershell\InstallAWSTools.ps1'
+        run: '.\install-aws-tools-powershell-wrongfolder\InstallAWSTools.ps1'
         shell: pwsh
       - name: Set AWS Credential
         run: |
