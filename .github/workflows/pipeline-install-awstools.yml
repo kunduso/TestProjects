@@ -41,7 +41,7 @@ jobs:
           aws-region: us-east-2
       # Check and install AWS.Tools.Installer and AWS.Tools.Common modules
       - name: Check and install AWS.Tools.Installer and AWS.Tools.Common modules
-        working-directory: $(System.DefaultWorkingDirectory)/install-aws-tools-powershell
+        #working-directory: $(System.DefaultWorkingDirectory)/install-aws-tools-powershell
         run: |
           './install-aws-tools-powershell/InstallAWSTools.ps1'
       # - name: Create the bucket that was deleted
