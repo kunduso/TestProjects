@@ -48,3 +48,10 @@ jobs:
       - name: Set AWS Credential
         run: |
           'Set-AWSCredential -AccessKey $(AWS_ACCESS_KEY_ID) -SecretKey $(AWS_SECRET_ACCESS_KEY) -StoreAs AWSProfile'
+      - name: List S3 bucket
+        run: |
+          'Get-S3Bucket'
+      - name: Remove AWS Credential
+        run: |
+          'Remove-AWSCredentialProfile -ProfileName $(profile) -Force'
+        if: always()
