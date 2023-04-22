@@ -47,11 +47,11 @@ jobs:
         shell: pwsh
       - name: Set AWS Credential
         run: |
-          Set-AWSCredential -AccessKey $(AWS_ACCESS_KEY_ID) -SecretKey $(AWS_SECRET_ACCESS_KEY) -StoreAs AWSProfile
+          Set-AWSCredential -AccessKey ${{env.AWS_ACCESS_KEY_ID}} -SecretKey ${{env.AWS_SECRET_ACCESS_KEY}} -StoreAs AWSProfile
       - name: List S3 bucket
         run: |
           Get-S3Bucket
       - name: Remove AWS Credential
         run: |
-          Remove-AWSCredentialProfile -ProfileName $(profile) -Force
+          Remove-AWSCredentialProfile -ProfileName AWSProfile -Force
         if: always()
