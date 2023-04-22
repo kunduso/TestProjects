@@ -43,10 +43,8 @@ jobs:
       - name: Check and install AWS.Tools.Installer and AWS.Tools.Common modules
         id: InstallAWSTools
         run: |
-          './install-aws-tools-powershell/InstallAWSTools.ps1' >> "$GITHUB_OUTPUT"
+          './install-aws-tools-powershell/InstallAWSTools.ps1'
         shell: pwsh
-      - name: Read script output
-        run: echo "Output [${{steps.InstallAWSTools.outputs}}]"
       - name: Set AWS Credential
         run: |
           'Set-AWSCredential -AccessKey $(AWS_ACCESS_KEY_ID) -SecretKey $(AWS_SECRET_ACCESS_KEY) -StoreAs AWSProfile'
