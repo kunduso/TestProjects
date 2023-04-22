@@ -17,8 +17,8 @@ permissions:
   id-token: write
   contents: read
 
-#env:
-  #bucket_name: kunduso-terraform-remote-bucket-1234567
+env:
+  POWERSHELL_TELEMETRY_OPTOUT: 1
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -47,7 +47,6 @@ jobs:
 
       - name: Script
         run: ./install-aws-tools-powershell/InstallAWSTools.ps1'
-        shell: powershell
       # - name: Create the bucket that was deleted
       #   run: |
       #     echo "creating bucket"
