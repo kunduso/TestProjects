@@ -50,7 +50,7 @@ jobs:
           Set-AWSCredential -AccessKey ${{env.AWS_ACCESS_KEY_ID}} -SecretKey ${{env.AWS_SECRET_ACCESS_KEY}} -StoreAs AWSProfile
       - name: List S3 bucket
         run: |
-          Get-S3Bucket -BucketName "kunduso-*"
+          Test-S3Bucket -BucketName "kunduso-terraform-remote-bucket-1234567"
       - name: Remove AWS Credential
         run: |
           Remove-AWSCredentialProfile -ProfileName AWSProfile -Force
