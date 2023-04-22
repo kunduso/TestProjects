@@ -44,8 +44,7 @@ jobs:
         id: InstallAWSTools
         run: |
           './install-aws-tools-powershell/InstallAWSTools.ps1' >> "$GITHUB_OUTPUT"
-      - name: Read output
-        run: echo "$GITHUB_OUTPUT"
+        shell: pwsh
       - name: Set AWS Credential
         run: |
           'Set-AWSCredential -AccessKey $(AWS_ACCESS_KEY_ID) -SecretKey $(AWS_SECRET_ACCESS_KEY) -StoreAs AWSProfile'
