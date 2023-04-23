@@ -38,7 +38,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           role-session-name: AWSSession
-          role-duration-seconds: 240
+          role-duration-seconds: 900
           aws-region: us-east-2
       # Check and install AWS.Tools.Installer and AWS.Tools.Common modules
       - name: Check and install AWS.Tools.Installer and AWS.Tools.Common modules
