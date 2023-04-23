@@ -38,6 +38,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           role-session-name: AWSSession
+          role-duration-seconds: 5
           aws-region: us-east-2
       # Check and install AWS.Tools.Installer and AWS.Tools.Common modules
       - name: Check and install AWS.Tools.Installer and AWS.Tools.Common modules
@@ -45,13 +46,6 @@ jobs:
         run: '.\InstallAWSTools.ps1'
         working-directory: install-aws-tools-powershell
         shell: pwsh
-      # - name: Set AWS Credential
-      #   run: |
-      #     Set-AWSCredential -AccessKey ${{env.AWS_ACCESS_KEY_ID}} -SecretKey ${{env.AWS_SECRET_ACCESS_KEY}} -StoreAs AWSProfile
       - name: List S3 bucket
         run: |
           Test-S3Bucket -BucketName "kunduso-terraform-remote-bucket-1234567"
-      # - name: Remove AWS Credential
-      #   run: |
-      #     Remove-AWSCredentialProfile -ProfileName AWSProfile -Force
-      #   if: always()
