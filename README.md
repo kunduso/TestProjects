@@ -12,6 +12,11 @@ You may access the artifact associated with this project [here.](./azure-devops-
 You may access the artifacts associated with this project [here.](./install-aws-tools-powershell/)
 
 -------------------------
-[![CI](https://github.com/kunduso/TestProjects/actions/workflows/pipeline.yml/badge.svg)](https://github.com/kunduso/TestProjects/actions/workflows/pipeline.yml)
+[![add-aws-credentials-to-gh-actions](https://github.com/kunduso/TestProjects/actions/workflows/pipeline.yml/badge.svg)](https://github.com/kunduso/TestProjects/actions/workflows/pipeline.yml)
 #### [Securely integrate AWS Credentials with GitHub Actions using OpenID Connect.](https://skundunotes.com/2023/02/28/securely-integrate-aws-credentials-with-github-actions-using-openid-connect/)
-You may access the artifacts associated with this project [here.](./github/workflows)
+You may access the artifacts associated with this project [here.](./github/workflows/)
+
+-------------------------
+[![install-aws-tools-ps](https://github.com/kunduso/TestProjects/actions/workflows/pipeline-install-awstools.yml/badge.svg?branch=main)](https://github.com/kunduso/TestProjects/actions/workflows/pipeline-install-awstools.yml)
+#### [AWS Tools for PowerShell module in GitHub Actions](http://skundunotes.com/2023/04/23/aws-tools-for-powershell-module-in-github-actions/)
+You may access the artifacts associated with this project [here.](./github/workflows/pipeline-install-awstools.yml)
