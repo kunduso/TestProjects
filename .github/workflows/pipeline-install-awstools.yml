@@ -1,12 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: add-aws-credentials-to-gh-actions
+name: install-aws-tools-ps
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "add-aws-credentials-to-gh-actions" ]
+    branches: [ "add-aws-install-tools-to-gh-actions" ]
   pull_request:
     branches: [ "main" ]
 
@@ -18,7 +18,7 @@ permissions:
   contents: read
 
 env:
-  bucket_name: kunduso-terraform-remote-bucket-1234567
+  POWERSHELL_TELEMETRY_OPTOUT: 1
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: bash
+        shell: pwsh
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -38,19 +38,14 @@ jobs:
         with:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           role-session-name: AWSSession
+          role-duration-seconds: 900
           aws-region: us-east-2
-      # Runs a command to interact with aws cloud
-      - name: Check if bucket exists and delete it
+      # Check and install AWS.Tools.Installer and AWS.Tools.Common modules
+      - name: Check and install AWS.Tools.Installer and AWS.Tools.Common modules
+        id: InstallAWSTools
+        run: '.\InstallAWSTools.ps1'
+        working-directory: install-aws-tools-powershell
+        shell: pwsh
+      - name: List S3 bucket
         run: |
-          if aws s3api head-bucket --bucket "$bucket_name" 2>/dev/null;
-          then
-            echo "bucket found and deleting the bucket"
-            aws s3 rb s3://"$bucket_name" --force
-          else
-            echo "no bucket found"
-          fi
-      - name: Create the bucket that was deleted
-        run: |
-          echo "creating bucket"
-          aws s3 mb s3://"$bucket_name"
-
+          Test-S3Bucket -BucketName "kunduso-terraform-remote-bucket-1234567"
