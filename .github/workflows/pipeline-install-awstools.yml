@@ -6,7 +6,7 @@ name: install-aws-tools-ps
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "add-aws-install-tools-to-gh-actions" ]
+    branches: [ "add-aws-install-tools-to-gh-actions", "main" ]
   pull_request:
     branches: [ "main" ]
 
